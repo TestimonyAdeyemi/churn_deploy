@@ -61,7 +61,7 @@ def create_binary(content):
         content = 0
     elif content == "Yes":
         content = 1
-    elif content == "Not":
+    elif content == "No":
         content = 0
     return content
 
@@ -71,7 +71,7 @@ def create_binary(content):
 def convert_muliples_var(content):
     if content == "No phone service":
         content = 1
-    elif content == "Not":
+    elif content == "No":
         content = 0
     elif content == "Yes":
         content = 2
@@ -129,7 +129,7 @@ online_security = st.sidebar.selectbox("Does the customer have online security s
 online_backup = st.sidebar.selectbox("Does the customer have online backup service?", var_multiple)
 device_protection = st.sidebar.selectbox("Does the customer have device protection service?", var_multiple)
 tech_support = st.sidebar.selectbox("Does the customer have tech support service?", var_multiple)
-streaming_tv = st.sidebar.selectbox("Does the customer have streaming tv service?", var_multiple)
+#streaming_tv = st.sidebar.selectbox("Does the customer have streaming tv service?", var_multiple)
 streaming_movies = st.sidebar.selectbox("Does the customer have streaming movies service?", var_multiple)
 contract = st.sidebar.selectbox("Which customer's current contract type?", var_contract)
 paperless_billing = st.sidebar.selectbox("Paperless billing", var_bool)
