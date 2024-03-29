@@ -256,10 +256,10 @@ if prediction:
             st.write("- Upsell tech support services to provide customers with assistance and troubleshooting, enhancing their overall experience and reducing churn.")
         
         if online_security == 1:
-            st.write("#### Presence of Online Security:")
+            st.write("*Presence of Online Security:")
             st.write("- Highlight the importance of online security and privacy protection to customers, emphasizing the value-added benefits of the service.")
         else:
-            st.write("## Lack of Online Security:")
+            st.write("*Lack of Online Security:")
             st.write("- Offer online security packages to protect customers' data and privacy, providing peace of mind and increasing loyalty.")
 
 
