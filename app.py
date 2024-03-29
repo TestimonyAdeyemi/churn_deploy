@@ -306,8 +306,6 @@ import seaborn as sns
 # Load data
 data = pd.read_csv("data.csv")
 
-
-# Set background color and font
 st.markdown(
     """
     <style>
@@ -321,61 +319,62 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# # Title and subtitle
-# st.title("Telco Customer Churn Analysis")
-# st.markdown("Explore the data and understand customer churn behavior")
-
-# Data exploration
-st.header("Data Exploration")
-
+# Title and subtitle
+st.title("Telco Customer Churn Analysis")
+st.markdown("Explore churn rates over different factors")
 
 # Visualizations
-st.header("Visualizations")
+st.header("Churn Rates by Different Factors")
 
 # Set style
 sns.set_style("whitegrid")
 
 # Churn distribution
 st.subheader("Churn Distribution:")
-plt.figure(figsize=(6, 4))
-sns.countplot(x="Churn", data=data, palette="pastel")
+fig, ax = plt.subplots(figsize=(6, 4))
+sns.countplot(x="Churn", hue="Churn", data=data, palette="pastel", ax=ax)
 plt.title("Churn Distribution")
 plt.xlabel("Churn")
 plt.ylabel("Count")
-st.pyplot()
+ax.legend().remove()
+st.pyplot(fig)
 
 # Churn by gender
 st.subheader("Churn by Gender:")
-plt.figure(figsize=(6, 4))
-sns.countplot(x="Gender", hue="Churn", data=data, palette="pastel")
+fig, ax = plt.subplots(figsize=(6, 4))
+sns.countplot(x="Churn", hue="Gender", data=data, palette="pastel", ax=ax)
 plt.title("Churn by Gender")
-plt.xlabel("Gender")
-plt.ylabel("Count")
-st.pyplot()
-
-# Tenure distribution
-st.subheader("Tenure Distribution:")
-plt.figure(figsize=(10, 4))
-sns.histplot(data=data, x="tenure", bins=30, kde=True, color='skyblue')
-plt.title("Tenure Distribution")
-plt.xlabel("Tenure (Months)")
-plt.ylabel("Count")
-st.pyplot()
-
-# Monthly charges distribution by churn
-st.subheader("Monthly Charges Distribution by Churn:")
-plt.figure(figsize=(10, 6))
-sns.boxplot(x="Churn", y="MonthlyCharges", data=data, palette="pastel")
-plt.title("Monthly Charges Distribution by Churn")
 plt.xlabel("Churn")
-plt.ylabel("Monthly Charges")
-st.pyplot()
-
-# Internet service distribution by churn
-st.subheader("Internet Service Distribution by Churn:")
-plt.figure(figsize=(8, 6))
-sns.countplot(x="InternetService", hue="Churn", data=data, palette="pastel")
-plt.title("Internet Service Distribution by Churn")
-plt.xlabel("Internet Service")
 plt.ylabel("Count")
-st.pyplot()
+st.pyplot(fig)
+
+# Churn by contract type
+st.subheader("Churn by Contract Type:")
+fig, ax = plt.subplots(figsize=(8, 6))
+sns.countplot(x="Contract", hue="Churn", data=data, palette="pastel", ax=ax)
+plt.title("Churn by Contract Type")
+plt.xlabel("Contract Type")
+plt.ylabel("Count")
+plt.legend(title="Churn", loc="upper right")
+st.pyplot(fig)
+
+# Churn by internet service type
+st.subheader("Churn by Internet Service Type:")
+fig, ax = plt.subplots(figsize=(8, 6))
+sns.countplot(x="InternetService", hue="Churn", data=data, palette="pastel", ax=ax)
+plt.title("Churn by Internet Service Type")
+plt.xlabel("Internet Service Type")
+plt.ylabel("Count")
+plt.legend(title="Churn", loc="upper right")
+st.pyplot(fig)
+
+# Churn by payment method
+st.subheader("Churn by Payment Method:")
+fig, ax = plt.subplots(figsize=(10, 6))
+sns.countplot(x="PaymentMethod", hue="Churn", data=data, palette="pastel", ax=ax)
+plt.title("Churn by Payment Method")
+plt.xlabel("Payment Method")
+plt.ylabel("Count")
+plt.xticks(rotation=45)
+plt.legend(title="Churn", loc="upper right")
+st.pyplot(fig)
