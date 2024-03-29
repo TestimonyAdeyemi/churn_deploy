@@ -176,7 +176,7 @@ if prediction:
     data_f = pd.DataFrame(data, index = [0])
     print(data_f)
     # predictions
-    predictions = model.predict(data)
+    predictions = model.predict(data_f)
 
     proba = model.predict_proba(data_f)
     proba_nochurn = np.round((proba[0][0])*100, 2)
