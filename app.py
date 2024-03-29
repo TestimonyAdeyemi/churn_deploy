@@ -65,6 +65,8 @@ def create_binary(content):
         content = 0
     return content
 
+
+
 # Covert Multiple Lines, Online Security, Online Backup, Device Protection, Tech Support, Streaming TV and Streaming Movies
 def convert_muliples_var(content):
     if content == "No phone service":
@@ -92,6 +94,8 @@ def convert_contract(content):
     elif content == "Two year":
         content = 2
     return content
+
+
 
 def convert_payment_method(content):
     if content == "Credit card (automatic)":
@@ -172,7 +176,7 @@ if prediction:
     data_f = pd.DataFrame(data, index = [0])
     print(data_f)
     # predictions
-    predictions = model.predict(data_f)
+    predictions = model.predict(data)
 
     proba = model.predict_proba(data_f)
     proba_nochurn = np.round((proba[0][0])*100, 2)
