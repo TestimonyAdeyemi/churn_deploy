@@ -1,4 +1,4 @@
-For more detailed overview you can navigate to the main [README](https://github.com/Moyo-tech/Telecom-Churn-Mining)
+For more detailed overview you can navigate to the main [README](https://github.com/TestimonyAdeyemi/churn_deploy)
 
 **Data Building and Cleaning Notebook** [Link to Notebook](https://drive.google.com/file/d/1_-16dbLCKR-fnJ5vmkV5i7_YK69Bp2j0/view?usp=sharing)
 * This notebook focuses on the project's initial phase, where the data is collected and understood.
