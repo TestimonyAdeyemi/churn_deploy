@@ -195,15 +195,49 @@ if prediction:
     proba_nochurn = np.round((proba[0][0])*100, 2)
     proba_churn = np.round((proba[0][1])*100, 2)
 
+
     if predictions == 1:
-        st.success(f"The customer is predicted to churn")
-        st.text(proba_churn)
+        st.success("The customer is predicted to churn")
+        st.text(f"Probability of churn: {proba_churn}")
+        
+        # Provide personalized recommendations
+        st.subheader("Recommendations:")
+        if tenure_months < 12:
+            st.markdown("- Consider switching to a longer-term contract for potential savings.")
+        if monthly_charges > 50:
+            st.markdown("- Explore alternative plans with lower monthly charges.")
+        if internet_services == "Fiber optic":
+            st.markdown("- Fiber optic internet service tends to be more expensive. You may consider downgrading to DSL or exploring other options.")
+        # Add more recommendations based on other features
+        
+        # Explain why the model predicts churn
+        st.subheader("Why it says so:")
+        st.markdown("The model predicts churn based on the following factors:")
+        if tenure_months < 12:
+            st.markdown("- Short tenure: Customers with shorter tenure are more likely to churn as they may not be fully committed to the service.")
+        if monthly_charges > 50:
+            st.markdown("- High monthly charges: Customers with higher monthly charges may be more sensitive to pricing and may churn in search of better deals.")
+        if internet_services == "Fiber optic":
+            st.markdown("- Fiber optic internet service: Customers with fiber optic service tend to have higher churn rates, possibly due to the higher cost.")
+        # Add explanations for other relevant factors
+            
+
+            
         
     elif predictions == 0:
-        st.error(f"The customer is predicted to not churn")
-        st.text(proba_nochurn)
+        st.error("The customer is predicted to not churn")
+        st.text(f"Probability of not churn: {proba_nochurn}")
 
-     
+
+        if predictions == 1:
+            st.success(f"The customer is predicted to churn")
+            st.text(proba_churn)
+            
+        elif predictions == 0:
+            st.error(f"The customer is predicted to not churn")
+            st.text(proba_nochurn)
+
+        
 
 
 
