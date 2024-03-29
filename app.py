@@ -328,17 +328,6 @@ st.markdown(
 # Data exploration
 st.header("Data Exploration")
 
-# Display first few rows of the data
-st.subheader("Sample Data:")
-st.dataframe(data.head())
-
-# Basic statistics summary
-st.subheader("Data Summary:")
-st.write(data.describe())
-
-# Data distribution
-st.subheader("Data Distribution:")
-st.write(data.describe(include="object"))
 
 # Visualizations
 st.header("Visualizations")
