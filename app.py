@@ -183,83 +183,83 @@ if prediction:
     if predictions == 1:
         st.success(f"The customer is predicted to churn.")
         st.text(f"Churn Probability: {proba_churn}%")
-        st.write("Explanations:")
+        st.write("## Explanations for Result:")
         st.write("- **High Monthly Charges:** Customers with higher monthly charges may perceive the service as costly, increasing the likelihood of churn.")
         st.write("- **Short Tenure:** Customers with shorter tenure may not have fully integrated into the service or experienced its long-term benefits, making them more susceptible to churn.")
         st.write("- **Lack of Essential Services:** Absence of crucial services like tech support and online security could indicate a lack of value-added features, leading to dissatisfaction and churn.")
-        st.write("Recommendations:")
-        st.write("### Specific Recommendations:")
+        #st.write("Recommendations:")
+        st.write("## User Specific Recommendations:")
         
         # High Monthly Charges
         if monthly_charges > 70:
-            st.write("#### High Monthly Charges:")
+            st.write("##### High Monthly Charges:")
             st.write("- Offer a personalized discount or loyalty program to reduce monthly charges and incentivize continued usage.")
         else:
-            st.write("#### High Monthly Charges:")
+            st.write("##### High Monthly Charges:")
             st.write("- Consider reviewing the pricing structure to ensure it remains competitive and aligns with customer expectations.")
         
         # Short Tenure
         if tenure_months <= 1:
-            st.write("#### Short Tenure:")
+            st.write("##### Short Tenure:")
             st.write("- Provide immediate onboarding assistance and personalized support to address any initial issues and establish a positive relationship from the start.")
         else:
-            st.write("#### Short Tenure:")
+            st.write("##### Short Tenure:")
             st.write("- Engage the customer with targeted promotions or loyalty incentives to encourage continued loyalty and enhance the overall experience.")
         
         # Lack of Essential Services
         if tech_support == 0:
-            st.write("#### Lack of Tech Support:")
+            st.write("##### Lack of Tech Support:")
             st.write("- Upsell tech support services to provide customers with assistance and troubleshooting, enhancing their overall experience and reducing churn.")
         else:
-            st.write("#### Presence of Tech Support:")
+            st.write("##### Presence of Tech Support:")
             st.write("- Continue providing excellent technical support services to enhance the customer experience and strengthen loyalty.")
         
         if online_security == 0:
-            st.write("#### Lack of Online Security:")
+            st.write("##### Lack of Online Security:")
             st.write("- Offer online security packages to protect customers' data and privacy, providing peace of mind and increasing loyalty.")
         else:
-            st.write("#### Presence of Online Security:")
+            st.write("##### Presence of Online Security:")
             st.write("- Highlight the importance of online security and privacy protection to customers, emphasizing the value-added benefits of the service.")
 
     elif predictions == 0:
         st.error(f"The customer is predicted to not churn.")
         st.text(f"No Churn Probability: {proba_nochurn}%")
-        st.write("Explanations:")
+        st.write("## Explanations for Result:")
         st.write("- **Stable Tenure:** Customers with longer tenure are likely more satisfied with the service and have developed loyalty over time.")
         st.write("- **Reasonable Monthly Charges:** Competitive pricing and fair monthly charges indicate good value for money, reducing the likelihood of churn.")
         st.write("- **Presence of Value-Added Services:** Services like tech support and online security enhance the overall customer experience, fostering loyalty.")
-        st.write("Recommendations:")
-        st.write("### Specific Recommendations:")
+        #st.write("Recommendations:")
+        st.write("## User Specific Recommendations:")
         
         # Stable Tenure
         if tenure_months >= 12:
-            st.write("#### Stable Tenure:")
+            st.write("##### Stable Tenure:")
             st.write("- Offer exclusive rewards or benefits to recognize and appreciate the customer's long-term commitment.")
         else:
-            st.write("#### Stable Tenure:")
+            st.write("##### Stable Tenure:")
             st.write("- Continue providing excellent service and personalized support to nurture the customer relationship during the early stages.")
         
         # Reasonable Monthly Charges
         if monthly_charges <= 50:
-            st.write("#### Reasonable Monthly Charges:")
+            st.write("##### Reasonable Monthly Charges:")
             st.write("- Maintain competitive pricing and periodically review pricing strategies to ensure they remain attractive to customers.")
         else:
-            st.write("#### Reasonable Monthly Charges:")
+            st.write("##### Reasonable Monthly Charges:")
             st.write("- Offer value-added services or perks to justify the slightly higher pricing and enhance the overall customer experience.")
         
         # Presence of Value-Added Services
         if tech_support == 1:
-            st.write("#### Presence of Tech Support:")
+            st.write("##### Presence of Tech Support:")
             st.write("- Continue providing excellent technical support services to enhance the customer experience and strengthen loyalty.")
         else:
-            st.write("#### Lack of Tech Support:")
+            st.write("##### Lack of Tech Support:")
             st.write("- Upsell tech support services to provide customers with assistance and troubleshooting, enhancing their overall experience and reducing churn.")
         
         if online_security == 1:
-            st.write("*Presence of Online Security:*")
+            st.write("##### Presence of Online Security:")
             st.write("- Highlight the importance of online security and privacy protection to customers, emphasizing the value-added benefits of the service.")
         else:
-            st.write("*Lack of Online Security:*")
+            st.write("##### Lack of Online Security:")
             st.write("- Offer online security packages to protect customers' data and privacy, providing peace of mind and increasing loyalty.")
 
 
