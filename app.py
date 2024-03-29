@@ -64,6 +64,7 @@ def create_binary(content):
     elif content == "Not":
         content = 0
     return content
+
 # Covert Multiple Lines, Online Security, Online Backup, Device Protection, Tech Support, Streaming TV and Streaming Movies
 def convert_muliples_var(content):
     if content == "No phone service":
@@ -109,8 +110,8 @@ st.sidebar.title("Customer's Data")
 
 # Categorical and binary variables
 var_gender = ("Male", "Female")
-var_bool = ("Yes", "Not")
-var_multiple = ("Yes", "Not", "No phone service")
+var_bool = ("Yes", "No")
+var_multiple = ("Yes", "No", "No phone service")
 var_internet = ("DSL", "Fiber optic", "No")
 var_contract = ("Month-to-month", "One year", "Two year")
 var_payment_m = ("Credit card (automatic)", "Bank transfer (automatic)", "Electronic check", "Mailed check")
@@ -207,14 +208,14 @@ if prediction:
             st.write("- Engage the customer with targeted promotions or loyalty incentives to encourage continued loyalty and enhance the overall experience.")
         
         # Lack of Essential Services
-        if tech_support == 0:
+        if tech_support == "Yes":
             st.write("##### Lack of Tech Support:")
             st.write("- Upsell tech support services to provide customers with assistance and troubleshooting, enhancing their overall experience and reducing churn.")
         else:
             st.write("##### Presence of Tech Support:")
             st.write("- Continue providing excellent technical support services to enhance the customer experience and strengthen loyalty.")
         
-        if online_security == 0:
+        if online_security == "Yes":
             st.write("##### Lack of Online Security:")
             st.write("- Offer online security packages to protect customers' data and privacy, providing peace of mind and increasing loyalty.")
         else:
@@ -248,14 +249,14 @@ if prediction:
             st.write("- Offer value-added services or perks to justify the slightly higher pricing and enhance the overall customer experience.")
         
         # Presence of Value-Added Services
-        if tech_support == 1:
+        if tech_support == "Yes":
             st.write("##### Presence of Tech Support:")
             st.write("- Continue providing excellent technical support services to enhance the customer experience and strengthen loyalty.")
         else:
             st.write("##### Lack of Tech Support:")
             st.write("- Upsell tech support services to provide customers with assistance and troubleshooting, enhancing their overall experience and reducing churn.")
         
-        if online_security == 1:
+        if online_security == "Yes":
             st.write("##### Presence of Online Security:")
             st.write("- Highlight the importance of online security and privacy protection to customers, emphasizing the value-added benefits of the service.")
         else:
