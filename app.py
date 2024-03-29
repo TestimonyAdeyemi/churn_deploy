@@ -323,10 +323,6 @@ st.markdown(
 
 # Title and subtitle
 st.title("Telco Customer Churn Analysis")
-st.markdown("Explore churn rates over different factors")
-
-# Visualizations
-st.header("Churn Rates by Different Factors")
 
 # Set style
 sns.set_style("whitegrid")
