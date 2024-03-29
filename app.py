@@ -25,21 +25,30 @@ with open("model.pkl", "rb") as f:
 # Title
 st.title("Telco Custumer Churn Detection")
 
-# Image
-#st.image("img/churn-image.jpeg")
-# About
+
+
 st.write(
     """
     ## About
-    The globalization and advancements of telecommunication industry, exponentially raises the number of operators in the market that escalates the competition. 
-    In this competitive era, it has become mandatory to maximize the proﬁts periodically, for that various strategies have been proposed, namely, acquiring newcustomers, 
-    up-selling the existing customers & increasing the retention period of existing customers. Among all the strategies, retention of existing customers is least expensive as compared to others. 
-    In order to adopt the third strategy, companies have to reduce the potential customer churn. In this sense, the main reason of churn is the dissatisfaction of consumer service and support system. 
-    The key to unlock solutions to this problem is by forecasting the customers which are at risk of churning.
+    In today's highly competitive telecommunications industry, retaining customers is crucial for maximizing profits and sustaining growth. Customer churn, or the loss of customers to competitors, 
+    can significantly impact a company's bottom line. To address this challenge, businesses need effective strategies for identifying and preventing churn.
 
-    **This Streamlit App  utilizes our trained Machine Learning model in order to detect whether the customers from a Telco company will churns or not the company.**
+    This Streamlit app leverages machine learning to predict whether customers of a Telco company are likely to churn. By analyzing various customer attributes and behaviors, the app provides insights 
+    that enable the company to take proactive measures to retain at-risk customers and enhance overall customer satisfaction.
 
-    
+    ### How It Works
+    1. **Input Customer Data**: Use the sidebar to input relevant customer information, including demographics, service usage, contract details, and payment methods.
+    2. **Predict Churn**: Click the "Detect Result" button to run the machine learning model and predict whether the customer is likely to churn or not.
+    3. **Receive Insights**: Based on the prediction, the app provides explanations for the outcome and actionable recommendations for retaining customers or improving satisfaction.
+    4. **Take Action**: Utilize the insights provided by the app to implement targeted retention strategies and enhance the company's customer retention efforts.
+
+    ### Why It Matters
+    - **Cost Savings**: Acquiring new customers is more expensive than retaining existing ones. By accurately predicting churn and implementing retention strategies, companies can save on acquisition costs.
+    - **Customer Satisfaction**: Identifying at-risk customers allows companies to address their concerns and improve service quality, leading to higher customer satisfaction and loyalty.
+    - **Competitive Advantage**: Companies that effectively manage churn gain a competitive edge by retaining valuable customers and reducing market share loss to competitors.
+
+    By utilizing this app, Telco companies can proactively address customer churn and strengthen customer relationships, ultimately driving long-term business success.
+
     """
 )
 
@@ -155,33 +164,6 @@ if prediction:
 
 
 
-    
-    #from pydantic import BaseModel
-
-
-    ## Schema validation
-    # class Features(BaseModel):
-    #     Gender: int
-    #     Parther: int
-    #     Dependents: int
-    #     Tenure_Months: int
-    #     Mutiple_lines: int
-    #     Internet_services: int
-    #     Online_Security: int
-    #     Online_Backup: int
-    #     Device_Protection: int
-    #     Tech_support: int
-    #     Streaming_tv: int
-    #     Streaming_movies: int
-    #     Contract: int
-    #     Paperless_billing: int
-    #     Payment_method: int
-    #     Monthly_charges: float
-    #     cltv: float
-
-
-
-
 
     # Features
     #features = data.dict()
@@ -196,46 +178,31 @@ if prediction:
     proba_churn = np.round((proba[0][1])*100, 2)
 
 
+    
+
     if predictions == 1:
-        st.success("The customer is predicted to churn")
-        st.text(f"Probability of churn: {proba_churn}")
-        
-        # Provide personalized recommendations
-        st.subheader("Recommendations:")
-        if tenure_months < 12:
-            st.markdown("- Consider switching to a longer-term contract for potential savings.")
-        if monthly_charges > 50:
-            st.markdown("- Explore alternative plans with lower monthly charges.")
-        if internet_services == "Fiber optic":
-            st.markdown("- Fiber optic internet service tends to be more expensive. You may consider downgrading to DSL or exploring other options.")
-        # Add more recommendations based on other features
-        
-        # Explain why the model predicts churn
-        st.subheader("Why it says so:")
-        st.markdown("The model predicts churn based on the following factors:")
-        if tenure_months < 12:
-            st.markdown("- Short tenure: Customers with shorter tenure are more likely to churn as they may not be fully committed to the service.")
-        if monthly_charges > 50:
-            st.markdown("- High monthly charges: Customers with higher monthly charges may be more sensitive to pricing and may churn in search of better deals.")
-        if internet_services == "Fiber optic":
-            st.markdown("- Fiber optic internet service: Customers with fiber optic service tend to have higher churn rates, possibly due to the higher cost.")
-        # Add explanations for other relevant factors
-            
+        st.error(f"The customer is predicted to not churn.")
+        st.text(f"No Churn Probability: {proba_nochurn}%")
+        st.write("Explanations:")
+        st.write("- **High Monthly Charges:** Customers with higher monthly charges may perceive the service as costly, increasing the likelihood of churn.")
+        st.write("- **Short Tenure:** Customers with shorter tenure may not have fully integrated into the service or experienced its long-term benefits, making them more susceptible to churn.")
+        st.write("- **Lack of Essential Services:** Absence of crucial services like tech support and online security could indicate a lack of value-added features, leading to dissatisfaction and churn.")
+        st.write("Recommendations:")
+        st.write("- **Retention Offers:** Offer tailored discounts or incentives to encourage customers to stay, such as loyalty discounts or free service upgrades.")
+        st.write("- **Proactive Outreach:** Reach out to churn-prone customers to understand their concerns and offer solutions before they decide to leave.")
+        st.write("- **Enhanced Customer Support:** Invest in improving customer service and support channels to address issues promptly and enhance customer satisfaction.")
 
-            
-        
     elif predictions == 0:
-        st.error("The customer is predicted to not churn")
-        st.text(f"Probability of not churn: {proba_nochurn}")
-
-
-        if predictions == 1:
-            st.success(f"The customer is predicted to churn")
-            st.text(proba_churn)
-            
-        elif predictions == 0:
-            st.error(f"The customer is predicted to not churn")
-            st.text(proba_nochurn)
+        st.success(f"The customer is predicted to churn.")
+        st.text(f"Churn Probability: {proba_churn}%")
+        st.write("Explanations:")
+        st.write("- **Stable Tenure:** Customers with longer tenure are likely more satisfied with the service and have developed loyalty over time.")
+        st.write("- **Reasonable Monthly Charges:** Competitive pricing and fair monthly charges indicate good value for money, reducing the likelihood of churn.")
+        st.write("- **Presence of Value-Added Services:** Services like tech support and online security enhance the overall customer experience, fostering loyalty.")
+        st.write("Recommendations:")
+        st.write("- **Customer Loyalty Programs:** Reward loyal customers with exclusive perks, discounts, or early access to new features.")
+        st.write("- **Upselling Opportunities:** Identify opportunities to upsell or cross-sell additional services based on the customer's usage patterns and preferences.")
+        st.write("- **Personalized Engagement:** Engage customers with personalized communications and offers to strengthen the relationship and encourage long-term loyalty.")
 
         
 
